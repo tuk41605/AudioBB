@@ -1,6 +1,6 @@
 package edu.temple.audiobb
 
-class Book (val title: String, val author:String)
+class Book (private val title: String, private val author:String)
 {
     fun getBookTitle(): String
     {
