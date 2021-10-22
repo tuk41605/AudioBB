@@ -1,5 +1,6 @@
 package edu.temple.audiobb
 
+import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -7,6 +8,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // test = findViewById(R.layout.activity_main)
+        // inflate(R.layout.another_layout, test)
 
         val bookList= ArrayList<Book>()
         val library = BookList(bookList)
@@ -16,6 +20,12 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main_fragment_container, BookDetailsFragment.newInstance("no", "no"))
                 .commit()
+        if(resources.configuration.orientation == ORIENTATION_LANDSCAPE)
+        {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_fragment_container, BookListFragment.newInstance("no", "no"))
+                .commit()
+        }
         // END TEST
     }
 
