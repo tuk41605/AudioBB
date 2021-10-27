@@ -15,18 +15,6 @@ class MainActivity : AppCompatActivity() {
         val bookList= ArrayList<Book>()
         val library = BookList(bookList)
         populateInitialLibrary(library)
-        // This code is purely for testing purposes
-        if (savedInstanceState == null)
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.main_fragment_container, BookDetailsFragment.newInstance("no", "no"))
-                .commit()
-        if(resources.configuration.orientation == ORIENTATION_LANDSCAPE)
-        {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.main_fragment_container, BookListFragment.newInstance("no", "no"))
-                .commit()
-        }
-        // END TEST
     }
 
     private fun populateInitialLibrary(library: BookList)
