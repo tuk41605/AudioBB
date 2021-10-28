@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout-land/activity_main.xml" value="0.4691358024691358" />
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout-large-land/activity_main.xml" value="0.35609103078982596" />
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout-large/activity_main.xml" value="0.415625" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/book_individual.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/book_info.xml" value="0.5" />
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/bookdetails_fragment.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/booklist_fragment.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/booklist_recyclerview_info.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/fragment_book_details.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/fragment_book_list.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/small_landscape.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/small_portrait.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/layout/tablet.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/Tyler/AndroidStudioProjects/AudioBB/app/src/main/res/xml/activity_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/well1/AndroidStudioProjects/AudioBB/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/well1/AndroidStudioProjects/AudioBB/app/src/main/res/layout/fragment_book_details.xml" value="0.2" />
         <entry key="..\:/Users/well1/AndroidStudioProjects/AudioBB/app/src/main/res/layout/fragment_book_list.xml" value="0.1793478260869565" />

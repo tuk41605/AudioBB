@@ -1,38 +1,81 @@
 package edu.temple.audiobb
 
-import android.content.res.Configuration.ORIENTATION_LANDSCAPE
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentContainerView
+import androidx.lifecycle.ViewModelProvider
 
-class MainActivity : AppCompatActivity() {
+/*
+    The bulk of this is modified recycled code from the professor's examples in class
+ */
+
+class MainActivity : AppCompatActivity(), BookListFragment.DoubleLayout {
+    private var twoPanes = false
+    lateinit var bookViewModel: BookViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // test = findViewById(R.layout.activity_main)
-        // inflate(R.layout.another_layout, test)
+        bookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
 
-        val bookList= ArrayList<Book>()
-        val library = BookList(bookList)
-        populateInitialLibrary(library)
+        twoPanes = findViewById<FragmentContainerView>(R.id.fragmentContainerView2) != null
+
+        if (savedInstanceState == null) {
+            bookViewModel.setSelectedBook(Book("", ""))
+
+            if (twoPanes) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView1, BookListFragment.newInstance(populateBooks()))
+                    .commit()
+            }
+            else {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainerView1, BookListFragment.newInstance(populateBooks()))
+                    .addToBackStack(null)
+                    .commit()
+            }
+        }
+
+        if (twoPanes) {
+            if (supportFragmentManager.findFragmentById(R.id.fragmentContainerView1) is BookDetailsFragment) {
+                supportFragmentManager.popBackStack()
+            }
+
+            if (supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) == null) {
+
+                supportFragmentManager.beginTransaction()
+                    .add(R.id.fragmentContainerView2, BookDetailsFragment.newInstance())
+                    .commit()
+            }
+        }
+        else if (bookViewModel.getBook().value != Book("", "")) {
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView1, BookDetailsFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
-    private fun populateInitialLibrary(library: BookList)
-    {
-        library.add(Book("For Whom the Bell Tolls", "Ernest Hemingway"))
-        library.add(Book("Bhagavad Gita", "Vyasa"))
-        library.add(Book("Iliad", "Homer"))
-        library.add(Book("The Histories", "Herodotus"))
-        library.add(Book("Dune", "Frank Herbert"))
-        library.add(Book("Das Kapital", "Karl Marx"))
-        library.add(Book("The Crusades", "Thomas Asbridge"))
-        library.add(Book("Irene Iddesleigh", "Amanda McKitrick Ros"))
-        library.add(Book("The Art of War", "Sun Tzu"))
-        library.add(Book("War and Peace", "Leo Tolstoy"))
-        library.add(Book("Wiseguy", "Nocholas Pileggi"))
-        library.add(Book("One Flew Over the Cuckoo's Nest", "Ken Kesey"))
-        library.add(Book("Into the Wild", "Jon Krakauer"))
-        library.add(Book("When Titans Clashed", "David Glantz"))
-        library.add(Book("Poetics and Rhetoric", "Aristotle"))
+    override fun selectionMade() {
+        if (!twoPanes) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView1, BookDetailsFragment.newInstance())
+                .addToBackStack(null)
+                .commit()
+        }
+    }
+
+    private fun populateBooks(): BookList {
+        val list = BookList()
+        val titles = resources.getStringArray(R.array.titles)
+        val authors = resources.getStringArray(R.array.authors)
+
+        for (i in titles.indices) {
+            list.add(Book(titles[i], authors[i]))
+        }
+
+        return list
     }
 }

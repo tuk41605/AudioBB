@@ -1,7 +1,11 @@
 package edu.temple.audiobb
 
-class BookList(private val bookList: ArrayList<Book>)
+import java.io.Serializable
+
+class BookList : Serializable
 {
+    private val bookList = ArrayList<Book>()
+
     fun add(book: Book)
     {
         bookList.add(book)

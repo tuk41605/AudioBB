@@ -1,55 +1,58 @@
 package edu.temple.audiobb
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 
 class BookDetailsFragment : Fragment() {
+    lateinit var title: TextView
+    lateinit var author: TextView
+    lateinit var v: View
+
+    // no real functionality implemented in onCreate
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_details, container, false)
+        v = inflater.inflate(R.layout.bookdetails_fragment, container, false)
+
+        return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ViewModelProvider(requireActivity())
-            .get(BookViewModel::class.java)
-            .getTitle()
-            .observe(requireActivity(), {
-                changeTitle(it)
-            })
+        title = v.findViewById(R.id.fragment_book_details_title)
+        author = v.findViewById(R.id.fragment_book_details_author)
 
         ViewModelProvider(requireActivity())
             .get(BookViewModel::class.java)
-            .getAuthor()
-            .observe(requireActivity(), {
-                changeAuthor(it)
+            .getBook()
+            .observe(viewLifecycleOwner, {
+                changeBook()
             })
     }
 
-    private fun changeTitle(title : String) {
-        val bTitle = view?.findViewById<TextView>(R.id.fragment_book_details_title)
+    private fun changeBook() {
+        val selectedBook = ViewModelProvider(requireActivity())
+            .get(BookViewModel::class.java)
+            .getBook()
 
-        if (bTitle != null) {
-            bTitle.text = title
-        }
+        title.text = selectedBook.value?.title
+        author.text = selectedBook.value?.author
     }
 
-    private fun changeAuthor(author : String) {
-        val bAuthor = view?.findViewById<TextView>(R.id.fragment_book_details_author)
-
-        if (bAuthor != null) {
-            bAuthor.text = author
-        }
+    companion object {
+        @JvmStatic
+        fun newInstance() = BookDetailsFragment()
     }
-
 }

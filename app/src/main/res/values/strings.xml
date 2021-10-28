@@ -1,5 +1,39 @@
 <resources>
     <string name="app_name">AudioBB</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="titles">
+        <item>For Whom the Bell Tolls</item>
+        <item>Bhagavad Gita</item>
+        <item>Iliad</item>
+        <item>The Histories</item>
+        <item>Dune</item>
+        <item>Das Kapital</item>
+        <item>The Crusades</item>
+        <item>Irene Iddesleigh</item>
+        <item>The Art of War</item>
+        <item>War and Peace</item>
+        <item>Wiseguy</item>
+        <item>One Flew Over the Cuckoos Nest</item>
+        <item>Into the Wild</item>
+        <item>When Titans Clashed</item>
+        <item>Poetics and Rhetoric</item>
+    </string-array>
+
+    <string-array name="authors">
+        <item>Ernest Hemingway</item>
+        <item>Vyasa</item>
+        <item>Homer</item>
+        <item>Herodotus</item>
+        <item>Frank Herbert</item>
+        <item>Karl Marx</item>
+        <item>Thomas Asbridge</item>
+        <item>Amanda McKitrick Ros</item>
+        <item>Sun Tzu</item>
+        <item>Leo Tolstoy</item>
+        <item>Nicholas Pileggi</item>
+        <item>Ken Kesey</item>
+        <item>Jon Krakauer</item>
+        <item>David Glantz</item>
+        <item>Aristotle</item>
+    </string-array>
 </resources>

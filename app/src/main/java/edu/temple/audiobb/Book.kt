@@ -1,14 +1,5 @@
 package edu.temple.audiobb
 
-class Book (private val title: String, private val author: String)
-{
-    fun getBookTitle(): String
-    {
-        return title
-    }
+// making Book a data class made manipulation easier
 
-    fun getBookAuthor(): String
-    {
-        return author
-    }
-}
+data class Book(val title: String, val author: String)
